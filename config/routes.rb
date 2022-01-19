@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       root 'home#index', as: :unauthenticated_root
     end
   end
+
+  resources :branch_products, path: 'check-stocks'
 end

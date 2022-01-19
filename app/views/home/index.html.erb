@@ -1,37 +1,4 @@
 <div class="container">
-  <div class="card-noline w-100 wrap shadow p-3 mb-5 bg-body rounded">
-    <div class="card-body p-4 p-lg-5">
-      <h3 class="card-title">เช็ก Stock</h3>
-      <hr>
-
-      <div class="row">
-        <% @furnitures.to_obj.each_with_index do |furniture, index| %>
-          <div class="col-sm-12 col-lg-4">
-            <div class="card-noline w-100 wrap shadow p-3 mb-5 bg-body rounded">
-              <div class="card-body p-4 p-lg-5">
-                <%= image_tag(furniture.image_url, class: 'service card-img') %>
-                <h5 class="card-title"><%= furniture.name %></h5>
-                <hr>
-                <div class="food-card_order-count">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-secondary minus-btn" type="button" id="button-remove" onclick="onUpdateStock(false, <%= index %>)">
-                        <ion-icon name="remove-outline"></ion-icon>
-                      </button>
-                    </div>
-                    <input type="text" class="form-control input-manulator" id="stock-<%= index %>" value="<%= furniture.stock %>">
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary add-btn" type="button" id="button-add" onclick="onUpdateStock(true, <%= index %>)">
-                        <ion-icon name="add-outline"></ion-icon>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <h3 class="card-title">เช็ก Stock</h3>
+  <hr>
 </div>

@@ -1,0 +1,144 @@
+th:
+  date:
+    order:
+      - year
+      - month
+      - day
+    abbr_day_names:
+      - อา
+      - จ
+      - อ
+      - พ
+      - พฤ
+      - ศ
+      - ส
+    abbr_month_names:
+      -
+      - ม.ค.
+      - ก.พ.
+      - มี.ค.
+      - เม.ย.
+      - พ.ค.
+      - มิ.ย.
+      - ก.ค.
+      - ส.ค.
+      - ก.ย.
+      - ต.ค.
+      - พ.ย.
+      - ธ.ค.
+    day_names:
+      - อาทิตย์
+      - จันทร์
+      - อังคาร
+      - พุธ
+      - พฤหัสบดี
+      - ศุกร์
+      - เสาร์
+    formats:
+      default: '%d %B %Y'
+      long: '%d %B %Y'
+      short: '%d %b'
+    month_names:
+      -
+      - มกราคม
+      - กุมภาพันธ์
+      - มีนาคม
+      - เมษายน
+      - พฤษภาคม
+      - มิถุนายน
+      - กรกฎาคม
+      - สิงหาคม
+      - กันยายน
+      - ตุลาคม
+      - พฤศจิกายน
+      - ธันวาคม
+  datetime:
+    distance_in_words:
+      about_x_hours: ประมาณ %{count} ชั่วโมง
+      about_x_months: ประมาณ %{count} เดือน
+      about_x_years: ประมาณ %{count} ปี
+      almost_x_years: เกือบ %{count} ปี
+      half_a_minute: ครึ่งนาที
+      less_than_x_minutes: น้อยกว่า %{count} นาที
+      less_than_x_seconds: น้อยกว่า %{count} วินาที
+      over_x_years: มากกว่า %{count} ปี
+      x_days: '%{count} วัน'
+      x_minutes: '%{count} นาที'
+      x_months: '%{count} เดือน'
+      x_seconds: '%{count} วินาที'
+    prompts:
+      day: วัน
+      hour: ชั่วโมง
+      minute: นาที
+      month: เดือน
+      second: วินาที
+      year: ปี
+    formats:
+      default: '%d %B %Y'
+      long: '%d %B %Y'
+      short: '%d %b'
+  layouts:
+    application:
+      logout: ออกจากระบบ
+      edit_profile: แก้ไขประวัติส่วนตัว
+      manage_group: จัดการกลุ่ม
+      fb_posted: รับวันเพิ่มฟรี
+      sign_up: สมัครสมาชิก
+      sign_in: เข้าสู่ระบบ
+    admin:
+      logout: ออกจากระบบ
+      edit_profile: แก้ไขประวัติส่วนตัว
+      manage_group: จัดการกลุ่ม
+      fb_posted: รับวันเพิ่มฟรี
+      sign_up: สมัครสมาชิก
+      sign_in: เข้าสู่ระบบ
+    landing_page:
+      logout: ออกจากระบบ
+      edit_profile: แก้ไขประวัติส่วนตัว
+      manage_group: จัดการกลุ่ม
+      sign_up: สมัครสมาชิก
+      sign_in: เข้าสู่ระบบ
+    devise:
+      sign_up: สมัครสมาชิก
+      sign_in: เข้าสู่ระบบ
+  time:
+    am: am
+    formats:
+      default: '%a, %d %b %Y %H:%M:%S %z'
+      long: '%B %d, %Y %H:%M'
+      short: '%d %b %H:%M'
+    pm: pm
+  users:
+    sessions:
+      new:
+        or: หรือ
+        login: เข้าสู่ระบบ
+        login_with_facebook: เข้าสู่ระบบผ่านเฟซบุ๊ก
+        login_with_line: เข้าสู่ระบบผ่านไลน์
+        registration: สมัครสมาชิก
+        forgot_password: ลืมรหัสผ่าน?
+        did_not_receive_confirmation_instructions: ยังไม่ได้รับอีเมลยืนยัน?
+    registrations:
+      new:
+        or: หรือ
+        login: เข้าสู่ระบบ
+        sign_up_with_facebook: สมัครสมาชิกผ่านเฟซบุ๊ก
+        registration: สมัครสมาชิก
+        forgot_password: ลืมรหัสผ่าน?
+        did_not_receive_confirmation_instructions: ยังไม่ได้รับอีเมลยืนยัน?
+      edit:
+        edit_profile: แก้ไขประวัติส่วนตัว
+        delete_account: ลบบัญชี
+        confirm_delete_account: ยืนยันการลบบัญชี
+        change_password: เปลี่ยนรหัสผ่าน
+    passwords:
+      new:
+        forgot_password: ลืมรหัสผ่าน?
+      edit:
+        change_password: เปลี่ยนรหัสผ่าน
+        new_password: รหัสผ่านใหม่
+        password_confirmation: ยืนยันรหัสผ่าน
+    confirmations:
+      new:
+        please_confirm_email: ยืนยันอีเมล
+        resend: ส่งอีกครั้ง
