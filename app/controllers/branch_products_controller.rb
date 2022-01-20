@@ -15,11 +15,14 @@ class BranchProductsController < ApplicationController
 
   def update
     if @branch_product.update(branch_product_params)
+      flash[:warning] = "แก้ไขข้อมูลเรียบร้อยแล้ว"
+
       respond_to do |format|
         format.turbo_stream
       end
     else
       flash[:danger] = @ot_pre_request.errors.full_messages.to_sentence
+
       respond_to do |format|
         format.turbo_stream
       end

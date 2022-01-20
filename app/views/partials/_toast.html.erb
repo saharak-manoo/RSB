@@ -1,0 +1,18 @@
+<div data-controller="toast" class="toast-container" style="position: fixed; top: 20px; right: 10px;">
+  <% index = 0 %>
+  <% index += 1 %>
+
+  <% flash.each do |key, message| %>
+    <div class="toast <%= flash_color(key) %> text-white fade show" id="toast-<%= index %>">
+      <div class="toast-header <%= flash_color(key) %> text-white">
+        <strong class="me-auto">
+          <i class="bi-gift-fill"></i>
+          RSB</strong>
+        <button type="button" class="btn-close btn-close-white" data-action="toast#dismiss"></button>
+      </div>
+      <div class="toast-body">
+        <%= message %>
+      </div>
+    </div>
+  <% end %>
+</div>

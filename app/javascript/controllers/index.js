@@ -6,7 +6,11 @@
 
 import { application } from './application';
 
-import HelloController from './hello_controller';
-import BranchProductsController from './branch_products_controller';
-application.register('home', HelloController);
+import BranchProductsController from './branch_products_controller.js';
 application.register('branch-products', BranchProductsController);
+
+import HelloController from './hello_controller.js';
+application.register('hello', HelloController);
+
+import ToastController from './toast_controller.js';
+application.register('toast', ToastController);
