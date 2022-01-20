@@ -49,6 +49,7 @@ export default class extends Controller {
 		let urlValue = document.getElementById(cardVal).dataset.pathValue;
 
 		patch(urlValue, {
+			body: JSON.stringify({ branch_product: { qty: target.value } }),
 			responseKind: 'turbo-stream',
 		});
 	}

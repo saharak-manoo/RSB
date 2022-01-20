@@ -1,4 +1,6 @@
 class BranchProductsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @branches = Branch.all.load_async
   end
@@ -12,5 +14,24 @@ class BranchProductsController < ApplicationController
   end
 
   def update
+    if @branch_product.update(branch_product_params)
+      respond_to do |format|
+        format.turbo_stream
+      end
+    else
+      flash[:danger] = @ot_pre_request.errors.full_messages.to_sentence
+      respond_to do |format|
+        format.turbo_stream
+      end
+    end
+  end
+
+  private
+
+  def branch_product_params
+    params.require(:branch_product)
+          .permit(
+            :qty
+          )
   end
 end
