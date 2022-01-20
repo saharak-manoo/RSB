@@ -3,10 +3,16 @@
 @import 'kanit';
 @import 'styles';
 @import 'swiper';
+@import 'vanillajs-datepicker/sass/datepicker-bs5';
+@import 'choices.js/src/styles/choices.scss';
 
 body {
   color: black;
   font-family: 'Kanit', sans-serif;
+}
+
+* {
+  font-family: 'Kanit';
 }
 
 .card-noline {
@@ -355,4 +361,17 @@ a {
 input:read-only,
 textarea:read-only {
   background-color: #EAEAEA !important;
+}
+
+.product-img {
+  width: 110px;
+  height: 110px;
+}
+
+.pl-2 {
+  padding-left: 20px !important;
+}
+
+.for-click {
+  cursor: pointer !important;
 }
