@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id @product do %>
+  <%= simple_form_for @product, html: { data: { controller: 'product', action: 'submit->product#clear' } } do |f| %>
+    <div data-controller="branch">
+      <%= f.input :name, collection: Branch.all.collect { |c| [c.name, c.id] }, prompt: "Select your OC Code", input_html: { class: "", data: { action: "change->branch#change" } } %>
+    </div>
+    <div class="row mt-3">
+      <div class="d-flex flex-row-reverse">
+        <%= f.submit "Submit", disable_with: 'Loading...', class: "btn-n rounded-pill px-4 btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

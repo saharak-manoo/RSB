@@ -4,12 +4,7 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-onUpdateStock = (isAdd, index) => {
-	var input = document.getElementById(`stock-${index}`);
-	var val = +input.value;
-	if (isAdd) {
-		input.value = val + 1;
-	} else {
-		input.value = val - 1;
-	}
-};
+import { application } from './application';
+
+import BranchController from './branch_controller';
+application.register('branch', BranchController);

@@ -1,6 +1,17 @@
 /** @format */
 
+import Choices from 'choices.js';
+
 import './purecounter';
-import './scripts';
 import './stock';
-import './swiper';
+
+document.addEventListener('DOMContentLoaded', (event) => {
+	load();
+});
+
+load = () => {
+	var selectes = document.querySelectorAll('.search-select');
+	selectes.forEach((e) => {
+		new Choices(e, { shouldSort: false });
+	});
+};

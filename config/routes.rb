@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :branch_products, path: 'check-stocks'
+
+  resources :products
 end

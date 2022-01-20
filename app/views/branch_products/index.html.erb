@@ -1,8 +1,20 @@
 <div class="container">
   <h3 class="card-title">เช็ก Stock</h3>
+  <div data-controller="branch">
+    <%= select_tag "", options_from_collection_for_select(@branches, "id", "name"), class: 'search-select', data: { action: "change->branch#change" } %>
+  </div>
   <hr>
 
   <div class="row">
+    <%
+=begin%>
+ <%= turbo_frame_tag "products", src: branch_products_path, target: "_top" do %>
+      <div>
+        Some framed content
+      </div>
+    <% end %>
+<%
+=end%>
     <%
 =begin%>
  <% @products.each_with_index do |product, index| %>

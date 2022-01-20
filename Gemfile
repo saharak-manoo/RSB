@@ -92,3 +92,5 @@ gem 'roo-xls'
 gem 'font_awesome5_rails'
 
 gem 'cancancan'
+
+gem 'importmap-rails'
