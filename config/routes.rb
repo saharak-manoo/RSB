@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :branch_products, path: 'check-stocks' do
+  resources :branch_products, path: 'stocks' do
     collection do
       get :products
+    end
+
+    member do
+      get :check
     end
   end
 end

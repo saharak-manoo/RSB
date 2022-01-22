@@ -7,6 +7,10 @@ class BranchProductsController < ApplicationController
 
   def products
     @branch_products = BranchProduct.where(branch_id: params[:branch_id])
+    if params[:keyword].present?
+      keyword = "%#{params[:keyword]}%"
+      @branch_products = @branch_products.left_outer_joins(:product).where('products.name ILIKE :keyword', keyword: keyword)
+    end
 
     respond_to do |format|
       format.turbo_stream
@@ -27,6 +31,9 @@ class BranchProductsController < ApplicationController
         format.turbo_stream
       end
     end
+  end
+
+  def check
   end
 
   private

@@ -7,5 +7,14 @@
     <%= select_tag "", options_from_collection_for_select(@branches, "id", "name"), id: 'branch-select', data: { action: "change->branch-products#changeBranch", branch_products_target: 'branchSelect' } %>
   </div>
 
-  <div class="row pt-3 p-3" id="products"></div>
+  <div class="row">
+    <div class="col-sm-12 pt-3">
+      <input class="form-control" placeholder="Search..." data-action="keyup->branch-products#searchProduct">
+    </div>
+
+    <div class="col-sm-12">
+      <div class="pt-3 p-3" id="products">
+      </div>
+    </div>
+  </div>
 </div>

@@ -50,6 +50,18 @@ export default class extends Controller {
 
 		patch(urlValue, {
 			body: JSON.stringify({ branch_product: { qty: target.value } }),
+			responseKind: 'json',
+		});
+	}
+
+	searchProduct(event) {
+		let target = this.getTarget('branch-select', null);
+		let params = new URLSearchParams();
+		params.append('branch_id', target.value);
+		params.append('keyword', event.target.value);
+
+
+		get(`${this.productsBranchProductsPathValue}?${params}`, {
 			responseKind: 'turbo-stream',
 		});
 	}
