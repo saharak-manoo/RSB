@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_18_141109) do
+ActiveRecord::Schema.define(version: 2022_01_22_131147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2022_01_18_141109) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "branch_product_id", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["branch_product_id"], name: "index_stocks_on_branch_product_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "first_name", default: "", null: false
@@ -82,4 +90,5 @@ ActiveRecord::Schema.define(version: 2022_01_18_141109) do
 
   add_foreign_key "branch_products", "branches"
   add_foreign_key "branch_products", "products"
+  add_foreign_key "stocks", "branch_products"
 end

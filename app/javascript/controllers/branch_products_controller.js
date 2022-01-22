@@ -11,8 +11,14 @@ export default class extends Controller {
 	};
 
 	connect() {
-		new Choices(this.branchSelectTarget, { shouldSort: false });
-		this.changeBranch();
+		this.setupSelected();
+	}
+
+	setupSelected() {
+		let selectorAll = document.querySelectorAll('select.use-search-select');
+		selectorAll.forEach((e) => {
+			new Choices(e, { shouldSort: false });
+		});
 	}
 
 	getTarget(id, event) {
@@ -64,5 +70,15 @@ export default class extends Controller {
 		get(`${this.productsBranchProductsPathValue}?${params}`, {
 			responseKind: 'turbo-stream',
 		});
+	}
+
+	onChangeStatus(event) {
+		let value = +event.target.value
+		console.log('value -> ', value);
+		if (value === 0) {
+			document.getElementById('for-import').classList.remove("d-none")
+		} else {
+			document.getElementById('for-import').classList.add('d-none');
+		}
 	}
 }

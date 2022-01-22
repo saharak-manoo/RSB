@@ -34,6 +34,8 @@ class BranchProductsController < ApplicationController
   end
 
   def check
+    @branches = Branch.all.load_async
+    @branch_product.stocks.build
   end
 
   private
