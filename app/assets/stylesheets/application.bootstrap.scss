@@ -5,6 +5,8 @@
 @import 'swiper';
 @import 'vanillajs-datepicker/sass/datepicker-bs5';
 @import 'choices.js/src/styles/choices.scss';
+// Theme
+@import "theme";
 
 body {
   color: black;
@@ -14,6 +16,11 @@ body {
 * {
   font-family: 'Kanit';
 }
+
+.pb-21 {
+  padding-bottom: 9.5rem !important;
+}
+
 
 .card-noline {
   position: relative;
