@@ -8,6 +8,7 @@ th:
         password_confirmation: ยืนยันรหัสผ่าน
         current_password: รหัสผ่านเดิม
         language: ภาษา
+        remember_me: จดจำฉันด้วย
       branch:
         name: สาขา
       stock_history:

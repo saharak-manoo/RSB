@@ -8,20 +8,10 @@
 ========================================================= */
 // Bootstrap functions
 @import "../../../node_modules/bootstrap/scss/functions";
-
-// User Variables
-@import "user-variables";
-
-// theme variables
+@import "login";
 @import "theme/variables";
-
-//utilities
 @import "theme/utilities";
-
-// Theme
 @import "theme/theme";
-
-// User
 @import "user";
 
 .heading-permalink {

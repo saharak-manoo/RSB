@@ -10,6 +10,18 @@ if User.count.zero?
   admin_user.save!
   admin_user.add_role(:admin)
   puts "Create user #{admin_user.email}"
+
+  sudarat_user = User.new(
+    email: "sudarat.mucom@rsb.com",
+    first_name: "Sudarat",
+    last_name: "Mucom",
+    password: "admin12345678",
+    confirmed_at: DateTime.now
+  )
+
+  sudarat_user.save!
+  sudarat_user.add_role(:admin)
+  puts "Create user #{sudarat_user.email}"
 end
 
 if Branch.count.zero?
