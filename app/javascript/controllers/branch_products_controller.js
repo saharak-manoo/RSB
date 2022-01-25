@@ -84,7 +84,6 @@ export default class extends Controller {
 
 	onChangeStatus(event) {
 		let value = +event.target.value;
-		console.log('value -> ', value);
 		let forImport = document.getElementById('for-import-or-change');
 		let forExport = document.getElementById('for-export');
 		if (value === 0 || value === 2) {
@@ -96,9 +95,34 @@ export default class extends Controller {
 		}
 	}
 
-	cloneInput() {
-		let exportFile = document.querySelector('div.export-file');
-		let inputNode = exportFile.children[0].cloneNode(true);
-		exportFile.appendChild(inputNode);
+	cloneInput(event) {
+		let value = +event.target.value;
+		let exportFile = document.querySelector('div.show-input-list');
+		exportFile.innerHTML = ''
+
+		for (let index = 0; index < value; index++) {
+			let htmlText = `<div class="row">
+												<div class="col-sm-4">
+													<div class="form-group string optional branch_product_stocks_date">
+														<label class="string optional" for="branch_product_stocks_attributes_${index}_date">Date</label>
+														<input class="form-control string optional use-datepicker mt-1 datepicker-input" type="text" name="branch_product[stocks_attributes][${index}][date]" id="branch_product_stocks_attributes_${index}_date">
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="form-group numeric optional branch_product_stocks_price">
+														<label class="numeric optional" for="branch_product_stocks_attributes_${index}_price">Price</label>
+														<input class="form-control numeric numeric optional mt-1" type="number" step="any" name="branch_product[stocks_attributes][${index}][price]" id="branch_product_stocks_attributes_${index}_price">
+													</div>
+												</div>
+											</div>`;
+
+			let template = document.createElement('template');
+			template.innerHTML = htmlText;
+
+			exportFile.appendChild(template.content);
+		}
+
+		this.setupDatePicker();
+		exportFile.classList.remove("d-none")
 	}
 }

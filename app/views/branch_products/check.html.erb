@@ -21,17 +21,18 @@
             </div>
             <div id="for-export" class="d-none col-sm-12">
               <div class="export-file">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <%= form.input :date, as: :string, input_html: { class: "use-datepicker mt-1" } %>
-                  </div>
-                  <div class="col-sm-4">
-                    <%= form.input :price, as: :numeric, input_html: { class: "mt-1" } %>
+                <%= form.input :qty, as: :numeric, input_html: { class: "mt-1", data: { action: "change->branch-products#cloneInput" } } %>
+                <div class="show-input-list d-none">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <%= form.input :date, as: :string, input_html: { class: "use-datepicker mt-1" } %>
+                    </div>
+                    <div class="col-sm-4">
+                      <%= form.input :price, as: :numeric, input_html: { class: "mt-1" } %>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <button type="button" class="btn-n rounded-pill px-4 btn-primary" data-action="click->branch-products#cloneInput">เพิ่ม</button>
             </div>
           </div>
         <% end %>
