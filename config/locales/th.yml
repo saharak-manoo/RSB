@@ -142,3 +142,6 @@ th:
       new:
         please_confirm_email: ยืนยันอีเมล
         resend: ส่งอีกครั้ง
+  import: รายการเข้า
+  export: รายการออก
+  change_branch: เปลี่ยนสาขา

@@ -1,0 +1,39 @@
+<div class="container" data-controller="stock-histories">
+  <div class="card-noline w-100 wrap shadow bg-body rounded mt-3">
+    <div class="card-body p-4">
+      <h3 class="card-title">แก้ไข Stock <%= @stock.product.name %> (สาขา <%= @stock.branch.name %>)</h3>
+      <hr>
+      <%= simple_form_for @stock_history, url: stock_stock_histories_path, method: :post, validate: true do |f| %>
+        <%= f.hidden_field :stock_id, value: @stock.id %>
+          <div class="row">
+            <div class="col-sm-4">
+              <%= f.input :status, as: :select, collection: @stock_history_statuses, prompt: "โปรดเลือก", input_html: { class: "use-search-select", data: { action: 'change->stock-histories#onChangeStatus' } } %>
+            </div>
+            <div id="for-import-or-change" class="d-none col-sm-12">
+              <div class="row">
+                <div class="col-sm-4">
+                  <%= f.input :target_branch_id, as: :select, collection: @branches, prompt: "โปรดเลือก", input_html: { class: "use-search-select" } %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.input :qty, input_html: { class: "mt-1", disabled: true } %>
+                </div>
+              </div>
+            </div>
+            <div id="for-export" class="d-none col-sm-12">
+              <div class="export-file">
+                <%= f.input :qty, input_html: { class: "mt-1", data: { action: "change->stock-histories#cloneInput" }, disabled: true } %>
+                <div class="show-input-list d-none">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="row mt-3">
+          <div class="d-flex flex-row-reverse">
+            <%= f.submit "บันทึก", disable_with: 'Loading...', class: "btn-n rounded-pill px-4 btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

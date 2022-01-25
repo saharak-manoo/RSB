@@ -8,6 +8,19 @@ th:
         password_confirmation: ยืนยันรหัสผ่าน
         current_password: รหัสผ่านเดิม
         language: ภาษา
+      branch:
+        name: สาขา
+      stock_history:
+        status: สถานะ
+        qty: จำนวน
+        target_branch_id: สาขา
+      order:
+        stock: สต๊อก
+        sold_at: ขายเมื่อ
+        price: ราคา
+      product:
+        name: ชื่อสินค้า
+        price: ราคา
     errors:
       messages:
         record_invalid: 'ไม่ผ่านการตรวจสอบ: %{errors}'

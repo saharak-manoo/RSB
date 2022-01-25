@@ -1,4 +1,4 @@
 class Branch < ApplicationRecord
-  has_many :branch_products, dependent: :destroy
+  has_many :stocks, dependent: :destroy
   validates :name, presence: true
 end

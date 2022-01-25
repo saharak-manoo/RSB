@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_131147) do
+ActiveRecord::Schema.define(version: 2022_01_25_033845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "branch_products", force: :cascade do |t|
-    t.bigint "branch_id", null: false
-    t.bigint "product_id", null: false
-    t.integer "qty", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["branch_id"], name: "index_branch_products_on_branch_id"
-    t.index ["product_id"], name: "index_branch_products_on_product_id"
-  end
 
   create_table "branches", force: :cascade do |t|
     t.string "name", null: false
@@ -31,9 +21,17 @@ ActiveRecord::Schema.define(version: 2022_01_22_131147) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "stock_history_id", null: false
+    t.date "sold_at", null: false
+    t.decimal "price", precision: 10, scale: 2, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_history_id"], name: "index_orders_on_stock_history_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
-    t.string "image_url"
     t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,12 +47,25 @@ ActiveRecord::Schema.define(version: 2022_01_22_131147) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
-  create_table "stocks", force: :cascade do |t|
-    t.bigint "branch_product_id", null: false
+  create_table "stock_histories", force: :cascade do |t|
+    t.bigint "stock_id", null: false
+    t.bigint "target_branch_id"
     t.integer "status", default: 0, null: false
+    t.integer "qty", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["branch_product_id"], name: "index_stocks_on_branch_product_id"
+    t.index ["stock_id"], name: "index_stock_histories_on_stock_id"
+    t.index ["target_branch_id"], name: "index_stock_histories_on_target_branch_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.bigint "branch_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "qty", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["branch_id"], name: "index_stocks_on_branch_id"
+    t.index ["product_id"], name: "index_stocks_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,7 +99,9 @@ ActiveRecord::Schema.define(version: 2022_01_22_131147) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
-  add_foreign_key "branch_products", "branches"
-  add_foreign_key "branch_products", "products"
-  add_foreign_key "stocks", "branch_products"
+  add_foreign_key "orders", "stock_histories"
+  add_foreign_key "stock_histories", "branches", column: "target_branch_id"
+  add_foreign_key "stock_histories", "stocks"
+  add_foreign_key "stocks", "branches"
+  add_foreign_key "stocks", "products"
 end

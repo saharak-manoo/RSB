@@ -1,16 +1,16 @@
-<% branch_products.each_with_index do |branch_product, index| %>
-  <% product = branch_product.product %>
-  <div class="col-sm-12 col-lg-12" data-path-value="<%= branch_product_path(product) %>" id="card-<%= index %>">
+<% stocks.each_with_index do |stock, index| %>
+  <% product = stock.product %>
+  <div class="col-sm-12 col-lg-12" data-path-value="<%= stock_path(product) %>" id="card-<%= index %>">
     <div class="card-noline w-100 wrap shadow bg-body rounded mt-3">
       <div class="card-body p-2">
         <div class="d-flex flex-row">
           <div class="d-flex flex-column pl-2">
-            <strong><%= product.name %></strong>
+            <strong><%= product.name %> (<%= stock.qty %>)</strong>
             <span class="pt-2">ราคา: <%= precision(product.price) %> บาท</span>
           </div>
         </div>
         <div class="d-flex flex-row-reverse">
-          <%= link_to check_branch_product_path(product), class: 'text-warning'  do %>
+          <%= link_to new_stock_stock_history_path(stock), class: 'text-warning'  do %>
             <ion-icon name="create-outline" size="large"></ion-icon>
           <% end %>
         </div>
