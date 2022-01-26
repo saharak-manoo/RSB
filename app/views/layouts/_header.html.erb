@@ -7,52 +7,29 @@
     <li class="dropdown ms-2">
       <a class="rounded-circle" href="#" role="button" id="dropdownUser"
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="avatar avatar-md avatar-indicators avatar-online">
-          <img alt="avatar" src="/logo.png"
-            class="rounded-circle" />
+        <div class="avatar avatar-md avatar-indicators avatar-online m-1">
+          <img alt="avatar" src="/logo.png" class="rounded-circle" />
         </div>
       </a>
       <div class="dropdown-menu dropdown-menu-end"
         aria-labelledby="dropdownUser">
         <div class="px-4 pb-0 pt-2">
           <div class="lh-1 ">
-            <h5 class="mb-1"> John E. Grainger</h5>
-            <a href="#" class="text-inherit fs-6">View my profile</a>
+            <h5 class="mb-1"><%= current_user.full_name %></h5>
           </div>
           <div class=" dropdown-divider mt-3 mb-2"></div>
         </div>
 
         <ul class="list-unstyled">
           <li>
-            <a class="dropdown-item" href="#">
-              <i class="me-2 icon-xxs dropdown-item-icon" data-feather="user"></i>Edit
-              Profile
-            </a>
+            <%= link_to "", class: 'dropdown-item' do %>
+              <ion-icon name="analytics-outline"></ion-icon> ประวัติการแก้ไขข้อมูล
+            <% end %>
           </li>
-          <li>
-            <a class="dropdown-item"
-              href="#">
-              <i class="me-2 icon-xxs dropdown-item-icon"
-                data-feather="activity"></i>Activity Log
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item text-primary" href="#">
-              <i class="me-2 icon-xxs text-primary dropdown-item-icon"
-                data-feather="star"></i>Go Pro
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              <i class="me-2 icon-xxs dropdown-item-icon"
-                data-feather="settings"></i>Account Settings
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="@@webRoot/index.html">
-              <i class="me-2 icon-xxs dropdown-item-icon"
-                data-feather="power"></i>Sign Out
-            </a>
+          <li data-controller="session" data-session-destroy-user-session-path-value=<%= destroy_user_session_path %>>
+            <%= link_to  "javascript:void(0);", class: 'dropdown-item', data: { action: "click->session#logout"  } do %>
+              <ion-icon name="log-out-outline"></ion-icon> ออกจากระบบ
+            <% end %>
           </li>
         </ul>
       </div>

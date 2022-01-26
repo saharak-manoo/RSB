@@ -15,3 +15,6 @@ application.register("stocks", StocksController)
 
 import ToastController from "./toast_controller.js"
 application.register("toast", ToastController)
+
+import SessionController from './session_controller.js';
+application.register('session', SessionController);
