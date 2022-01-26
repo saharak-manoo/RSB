@@ -2,35 +2,13 @@
 
 import { Controller } from '@hotwired/stimulus';
 import { get, patch } from '@rails/request.js';
-import Choices from 'choices.js';
-import { Datepicker } from 'vanillajs-datepicker';
 
 export default class extends Controller {
 	static values = {
 		stocksPath: String,
 	};
 
-	connect() {
-		this.setupSelected();
-		this.setupDatePicker();
-	}
-
-	setupSelected() {
-		let selectorAll = document.querySelectorAll('select.use-search-select');
-		selectorAll.forEach((e) => {
-			new Choices(e, { shouldSort: false });
-		});
-	}
-
-	setupDatePicker() {
-		let selectorAll = document.querySelectorAll('input.use-datepicker');
-		selectorAll.forEach((e) => {
-			new Datepicker(e, {
-				buttonClass: 'btn',
-				format: 'dd/mm/yyyy',
-			});
-		});
-	}
+	connect() {}
 
 	getTarget(id, event) {
 		return event?.target == null ? document.getElementById(id) : event?.target;

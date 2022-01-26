@@ -18,5 +18,12 @@
           Stock
         <% end %>
       </li>
+
+      <li class="nav-item">
+        <%= link_to logs_path, class: "nav-link has-arrow #{"active" if controller_name == "logs"}" do %>
+          <ion-icon name="recording-outline" class="pr-2"></ion-icon>
+          ประวัติการแก้ไข Stock
+        <% end %>
+      </li>
     </ul>
 </nav>

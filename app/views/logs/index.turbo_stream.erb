@@ -1,0 +1,7 @@
+<%= turbo_stream.update "logs" do %>
+  <%= render 'stock_histories/logs', stock_histories: @stock_histories, is_product_name: true %>
+<% end %>
+
+<%= turbo_stream.update "paginate" do %>
+  <%= paginate @stock_histories, params: { controller: 'logs', action: 'index' } %>
+<% end %>
