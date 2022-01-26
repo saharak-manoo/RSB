@@ -3,12 +3,12 @@ class StocksController < ApplicationController
 
   def index
     @branches = Branch.all.load_async
-    @stocks = Stock.where(branch_id: params[:branch_id] || 1).order(updated_at: :desc).limit(2)
+    @stocks = Stock.where(branch_id: params[:branch_id] || 1)
     if params[:keyword].present?
       keyword = "%#{params[:keyword]}%"
       @stocks = @stocks.left_outer_joins(:product).where('products.name ILIKE :keyword', keyword: keyword)
     end
-    @page_stocks = @stocks.page(params[:page] || 1).per(2)
+    @stocks = @stocks.page(params[:page] || 1).per(2)
 
     respond_to do |format|
       format.html

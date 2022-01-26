@@ -5,10 +5,7 @@
         <div>
           <div class="d-flex justify-content-between align-items-center">
             <div class="mb-2 mb-lg-0">
-              <h3 class="mb-0  text-white">เช็ก Stock</h3>
-            </div>
-            <div>
-              <a href="#" class="btn btn-white">Create New Project</a>
+              <h3 class="mb-0 text-white">เช็ก Stock</h3>
             </div>
           </div>
 
@@ -22,7 +19,7 @@
                     </div>
                     <div class="col-sm-6 col-lg-3 offset-lg-6 pt-1">
                       <div class="d-flex flex-row-reverse">
-                        <input class="form-control" placeholder="Search..." data-action="keyup->stocks#searchProduct">
+                        <input class="form-control" placeholder="ค้นหา..." data-action="keyup->stocks#searchProduct">
                       </div>
                     </div>
                   </div>
@@ -34,6 +31,7 @@
                         <th>ชื่อสินค้า</th>
                         <th>จำนวน (ชิ้น)</th>
                         <th>ราคา (บาท)</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody id="products">
@@ -43,7 +41,7 @@
                 </div>
 
                 <div class="m-3" id="paginate">
-                  <%= paginate @page_stocks, params: { controller: 'stocks', action: 'index' } %>
+                  <%= paginate @stocks, params: { controller: 'stocks', action: 'index' } %>
                 </div>
               </div>
             </div>

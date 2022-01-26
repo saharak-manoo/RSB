@@ -5,15 +5,20 @@ import { get } from '@rails/request.js';
 
 export default class extends Controller {
 	connect() {
-		console.log('load -> ');
+		console.log('Pagination -> ');
 	}
 
 	get(event) {
 		let target = event.target;
+    let url = target.dataset.url;
 
-		console.log('url -> ', target.dataset.url);
-		get(target.dataset.url, {
-			responseKind: 'turbo-stream',
-		});
+		if (url == undefined) {
+			url = target.parentNode.dataset.url;
+		}
+		if (url) {
+			get(url, {
+				responseKind: 'turbo-stream',
+			});
+		}
 	}
 }

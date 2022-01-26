@@ -1,4 +1,5 @@
 <% stocks.each_with_index do |stock, index| %>
+  <% stock = stock.decorate %>
   <% product = stock.product %>
   <tr>
     <td class="align-middle">
@@ -15,7 +16,8 @@
       <%= precision(product.price) %>
     </td>
 
-    <td class="align-middle text-dark">
+    <td class="align-middle">
+      <%= stock.edit_button %>
     </td>
   </tr>
 <% end %>

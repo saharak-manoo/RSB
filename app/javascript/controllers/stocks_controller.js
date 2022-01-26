@@ -77,7 +77,7 @@ export default class extends Controller {
 		params.append('branch_id', target.value);
 		params.append('keyword', event.target.value);
 
-		get(`${this.productsStocksPathValue}?${params}`, {
+		get(`${this.stocksPathValue}?${params}`, {
 			responseKind: 'turbo-stream',
 		});
 	}

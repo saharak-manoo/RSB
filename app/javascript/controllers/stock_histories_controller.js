@@ -42,7 +42,7 @@ export default class extends Controller {
 		for (let index = 0; index < value; index++) {
 			let htmlText = `<div class="row">
 												<div class="col-sm-4">
-													<div class="form-group string required stock_history_orders_sold_at">
+													<div class="form-group string required stock_history_orders_sold_at" data-controller="date-picker">
 														<label class="string required" for="stock_history_orders_attributes_${index}_sold_at">ขายเมื่อ <abbr title="required">*</abbr></label>
 														<input class="form-control string required use-datepicker mt-1 datepicker-input" type="text" name="stock_history[orders_attributes][${index}][sold_at]" id="stock_history_orders_attributes_${index}_sold_at"
 															value="${dayjs().format('DD/MM/YYYY')}">

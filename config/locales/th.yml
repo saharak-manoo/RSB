@@ -1,4 +1,11 @@
 th:
+  views:
+    pagination:
+      first: "&laquo; หน้าแรก"
+      last: "หน้าสุดท้าย &raquo;"
+      previous: "&lsaquo; ก่อนหน้า"
+      next: "ถัดไป &rsaquo;"
+      truncate: "&hellip;"
   date:
     order:
       - year

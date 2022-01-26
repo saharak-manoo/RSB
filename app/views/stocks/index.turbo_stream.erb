@@ -3,5 +3,5 @@
 <% end %>
 
 <%= turbo_stream.update "paginate" do %>
-  <%= paginate @page_stocks, params: { controller: 'stocks', action: 'index' } %>
+  <%= paginate @stocks, params: { controller: 'stocks', action: 'index' } %>
 <% end %>

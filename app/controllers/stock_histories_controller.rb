@@ -39,6 +39,7 @@ class StockHistoriesController < ApplicationController
           .permit(
             :status,
             :stock_id,
+            :user_id,
             :target_branch_id,
             :qty,
             orders_attributes: [:stock_history_id, :sold_at, :price, :_destroy]
