@@ -17,8 +17,8 @@
               <div class="card">
                 <div class="card-header bg-white py-4">
                   <div class="d-flex flex-row-reverse">
-                    <div class="row">
-                      <input class="form-control" placeholder="ค้นหา..." data-action="keyup->stocks#searchProduct">
+                    <div class="row" data-controller="logs">
+                      <input class="form-control" placeholder="ค้นหา..." data-action="keyup->logs#search" data-url="<%= logs_path %>">
                     </div>
                   </div>
 

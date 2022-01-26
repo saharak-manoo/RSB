@@ -13,6 +13,9 @@ application.register("date-picker", DatePickerController)
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import LogsController from "./logs_controller.js"
+application.register("logs", LogsController)
+
 import PaginationController from "./pagination_controller.js"
 application.register("pagination", PaginationController)
 

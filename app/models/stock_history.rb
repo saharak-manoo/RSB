@@ -5,7 +5,7 @@ class StockHistory < ApplicationRecord
   has_one :product, through: :stock
   has_one :branch, through: :stock
   belongs_to :user
-  has_many   :orders, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   validates :stock_id, :status, :qty, presence: true
   validates :target_branch_id, presence: true, if: :not_status_export
