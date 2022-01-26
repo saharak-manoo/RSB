@@ -7,25 +7,6 @@ import dayjs from 'dayjs';
 
 export default class extends Controller {
 	connect() {
-		this.setupSelected();
-		this.setupDatePicker();
-	}
-
-	setupSelected() {
-		let selectorAll = document.querySelectorAll('select.use-search-select');
-		selectorAll.forEach((e) => {
-			new Choices(e, { shouldSort: false });
-		});
-	}
-
-	setupDatePicker() {
-		let selectorAll = document.querySelectorAll('input.use-datepicker');
-		selectorAll.forEach((e) => {
-			new Datepicker(e, {
-				buttonClass: 'btn',
-				format: 'dd/mm/yyyy',
-			});
-		});
 	}
 
 	onChangeStatus(event) {
@@ -81,7 +62,6 @@ export default class extends Controller {
 			exportFile.appendChild(template.content);
 		}
 
-		this.setupDatePicker();
 		exportFile.classList.remove('d-none');
 	}
 }

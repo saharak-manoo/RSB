@@ -18,10 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :stocks do
-    collection do
-      get :products
-    end
-
     resources :stock_histories, path: 'check'
   end
 end

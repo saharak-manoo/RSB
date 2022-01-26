@@ -6,10 +6,17 @@
     </a>
     <ul class="navbar-nav flex-column" id="sideNavbar">
       <li class="nav-item">
-        <a class="nav-link has-arrow <%= "active" if controller_name == "dashboard" %>" href="<%= authenticated_root_path %>">
+        <%= link_to authenticated_root_path, class: "nav-link has-arrow #{"active" if controller_name == "dashboard"}" do %>
           <ion-icon name="apps-outline" class="pr-2"></ion-icon>
-          Dashboard
-        </a>
+          แดชบอร์ด
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to stocks_path, class: "nav-link has-arrow #{"active" if controller_name == "stocks"}" do %>
+          <ion-icon name="cart-outline" class="pr-2"></ion-icon>
+          Stock
+        <% end %>
       </li>
     </ul>
 </nav>

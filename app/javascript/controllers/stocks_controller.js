@@ -7,7 +7,7 @@ import { Datepicker } from 'vanillajs-datepicker';
 
 export default class extends Controller {
 	static values = {
-		productsStocksPath: String,
+		stocksPath: String,
 	};
 
 	connect() {
@@ -41,7 +41,7 @@ export default class extends Controller {
 		let params = new URLSearchParams();
 		params.append('branch_id', target.value);
 
-		get(`${this.productsStocksPathValue}?${params}`, {
+		get(`${this.stocksPathValue}?${params}`, {
 			responseKind: 'turbo-stream',
 		});
 	}

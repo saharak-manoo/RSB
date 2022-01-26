@@ -1,0 +1,7 @@
+<%= turbo_stream.update "products" do %>
+  <%= render 'stocks/product_table', stocks: @stocks %>
+<% end %>
+
+<%= turbo_stream.update "paginate" do %>
+  <%= paginate @page_stocks, params: { controller: 'stocks', action: 'index' } %>
+<% end %>

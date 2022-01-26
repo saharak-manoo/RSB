@@ -1,0 +1,3 @@
+<li class="page-item">
+  <%= link_to_unless current_page.last?, raw(t 'views.pagination.last'), "javascript:void(0);", data: { action: "click->pagination#get", url: url }, remote: remote, class: 'page-link' %>
+</li>

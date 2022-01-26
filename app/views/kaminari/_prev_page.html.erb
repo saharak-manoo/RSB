@@ -1,0 +1,3 @@
+<li class="page-item">
+  <%= link_to_unless current_page.first?, raw(t 'views.pagination.previous'), "javascript:void(0);", data: { action: "click->pagination#get", url: url }, rel: 'prev', remote: remote, class: 'page-link' %>
+</li>

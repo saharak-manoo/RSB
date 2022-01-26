@@ -4,8 +4,26 @@
 
 import { application } from "./application"
 
+import DataTableController from "./data_table_controller.js"
+application.register("data-table", DataTableController)
+
+import DatePickerController from "./date_picker_controller.js"
+application.register("date-picker", DatePickerController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
+
+import PaginationController from "./pagination_controller.js"
+application.register("pagination", PaginationController)
+
+import RemoteModalController from "./remote_modal_controller.js"
+application.register("remote-modal", RemoteModalController)
+
+import SearchSelectController from "./search_select_controller.js"
+application.register("search-select", SearchSelectController)
+
+import SessionController from "./session_controller.js"
+application.register("session", SessionController)
 
 import StockHistoriesController from "./stock_histories_controller.js"
 application.register("stock-histories", StockHistoriesController)
@@ -15,6 +33,3 @@ application.register("stocks", StocksController)
 
 import ToastController from "./toast_controller.js"
 application.register("toast", ToastController)
-
-import SessionController from './session_controller.js';
-application.register('session', SessionController);

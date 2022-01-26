@@ -94,3 +94,5 @@ gem 'font_awesome5_rails'
 gem 'cancancan'
 
 gem 'simplest_status'
+
+gem 'kaminari'
