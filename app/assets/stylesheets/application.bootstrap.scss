@@ -386,3 +386,7 @@ textarea:read-only {
 .pr-2 {
   padding-right: 20px;
 }
+
+table.use-data-table .sort {
+  cursor: pointer;
+}

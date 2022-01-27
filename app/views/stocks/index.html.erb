@@ -25,12 +25,21 @@
                   </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table text-nowrap mb-0">
+                  <table class="table text-nowrap mb-0 use-data-table" data-controller="table" data-table-stocks-path-value="<%= stocks_path %>">
                     <thead class="table-light">
                       <tr>
-                        <th>ชื่อสินค้า</th>
-                        <th>จำนวน (ชิ้น)</th>
-                        <th>ราคา (บาท)</th>
+                        <th class="sort" data-sort="product" data-action="click->table#sortBy">
+                          ชื่อสินค้า
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
+                        <th class="sort" data-sort="qty" data-action="click->table#sortBy">
+                          จำนวน (ชิ้น)
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
+                        <th class="sort" data-sort="price" data-action="click->data-table#sortBy">
+                          ราคา (บาท)
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
                         <th></th>
                       </tr>
                     </thead>
