@@ -1,0 +1,75 @@
+<div class="bg-primary pt-10 pb-21"></div>
+  <div class="container-fluid mt-n22 px-6">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-12">
+        <div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="mb-2 mb-lg-0">
+              <h3 class="mb-0 text-white">รายการขาย</h3>
+            </div>
+          </div>
+
+          <div class="row mt-6">
+            <div class="col-md-12 col-12">
+              <div class="card" data-controller="table" data-table-url-value="<%= sales_path %>">
+                <div class="card-header bg-white py-4">
+                  <div class="row">
+                    <div class="col-sm-6 col-lg-3 pt-1" data-controller="search-select">
+                      <%= select_tag "", options_from_collection_for_select(@branches, "id", "name"), class: 'use-search-select', data: { action: 'change->table#search', table_target: 'filterSelect', name: 'branch_id' } %>
+                    </div>
+                    <div class="col-sm-6 col-lg-2 pt-1" data-controller="search-select">
+                      <%= select_tag "", options_for_select([5, 10, 15, 20, 50, 100].to_a), class: 'use-search-select', data: { action: 'change->table#search', table_target: 'limitSelect' } %>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 offset-lg-1 pt-2" data-controller="date-picker">
+                      <div class="input-group">
+                        <input class="form-control border use-datepicker" eadonly value="<%= @sold_at.date_formatted %>" data-table-target="datepickerInput" data-name="sold_at">
+                        <span class="input-group-append">
+                          <button class="btn btn-outline-primary bg-white border ms-n3" type="button" data-action="click->table#search">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-3 pt-2">
+                      <div class="d-flex flex-row-reverse">
+                        <input class="form-control" placeholder="ค้นหา..." data-action="keyup->table#search" data-table-target="searchInput">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 use-data-table">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="sort" data-sort="product" data-action="click->table#sortBy">
+                          ชื่อสินค้า
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
+                        <th class="sort" data-sort="sold_at" data-action="click->table#sortBy">
+                          วันที่ขาย
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
+                        <th class="sort" data-sort="price" data-action="click->table#sortBy">
+                          ราคาขาย (บาท)
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="orders">
+                      <%= render 'order_table', orders: @orders %>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="m-3" id="paginate">
+                  <%= paginate @orders, params: { controller: 'sales', action: 'index' } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

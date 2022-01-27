@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   end
 
   resources :logs, only: [:index]
+
+  resources :sales, only: [:index]
 end

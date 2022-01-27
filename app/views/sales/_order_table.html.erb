@@ -1,0 +1,19 @@
+<% orders.each_with_index do |order, index| %>
+  <% stock_history = order.stock_history %>
+  <% product = stock_history.stock.product %>
+  <tr>
+    <td class="align-middle">
+      <div class="d-flex align-items-center">
+        <h5 class=" mb-1">
+          <%= product.name %>
+        </h5>
+      </div>
+    </td>
+    <td class="align-middle">
+      <%= order.sold_at.date_full_format %>
+    </td>
+    <td class="align-middle">
+      <%= precision(order.price) %>
+    </td>
+  </tr>
+<% end %>

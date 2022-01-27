@@ -5,9 +5,9 @@ import { get } from '@rails/request.js';
 
 export default class extends Controller {
 	static values = {
-		stocksPath: String,
+		url: String,
 	};
-	static targets = ["searchInput", "limitSelect", "filterSelect"]
+	static targets = ["searchInput", "limitSelect", "filterSelect", "datepickerInput"]
 
 	connect() {}
 
@@ -17,6 +17,12 @@ export default class extends Controller {
 			params.append(
 				this.filterSelectTarget.dataset.name,
 				this.filterSelectTarget.value
+			);
+		}
+		if (this.datepickerInputTarget) {
+			params.append(
+				this.datepickerInputTarget.dataset.name,
+				this.datepickerInputTarget.value
 			);
 		}
 		params.append(
@@ -40,11 +46,11 @@ export default class extends Controller {
 		if (icon.name === 'swap-vertical-outline') {
 			icon.name = 'arrow-up-outline';
 			icon.classList.add('text-primary');
-			order = 'ASC';
+			order = 'asc';
 		} else if (icon.name === 'arrow-up-outline') {
 			icon.name = 'arrow-down-outline';
 			icon.classList.add('text-primary');
-			order = 'DESC';
+			order = 'desc';
 		} else {
 			icon.name = 'swap-vertical-outline';
 			icon.classList.remove('text-primary');
@@ -64,7 +70,7 @@ export default class extends Controller {
 	}
 
 	getData(params) {
-		get(`${this.stocksPathValue}?${params}`, {
+		get(`${this.urlValue}?${params}`, {
 			responseKind: 'turbo-stream',
 		});
 	}

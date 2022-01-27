@@ -14,6 +14,10 @@ export default class extends Controller {
 			new Datepicker(e, {
 				buttonClass: 'btn',
 				format: 'dd/mm/yyyy',
+				maxDate: new Date(),
+				todayBtn: true,
+				todayHighlight: true,
+				autohide: true,
 			});
 		});
 	}

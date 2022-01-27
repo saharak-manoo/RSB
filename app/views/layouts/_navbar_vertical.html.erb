@@ -7,7 +7,7 @@
     <ul class="navbar-nav flex-column" id="sideNavbar">
       <li class="nav-item">
         <%= link_to authenticated_root_path, class: "nav-link has-arrow #{"active" if controller_name == "dashboard"}" do %>
-          <ion-icon name="apps-outline" class="pr-2"></ion-icon>
+          <ion-icon name="home-outline" class="pr-2"></ion-icon>
           แดชบอร์ด
         <% end %>
       </li>
@@ -16,6 +16,13 @@
         <%= link_to stocks_path, class: "nav-link has-arrow #{"active" if controller_name == "stocks"}" do %>
           <ion-icon name="cart-outline" class="pr-2"></ion-icon>
           Stock
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to sales_path, class: "nav-link has-arrow #{"active" if controller_name == "sales"}" do %>
+          <ion-icon name="cash-outline" class="pr-2"></ion-icon>
+          รายการขาย
         <% end %>
       </li>
 
