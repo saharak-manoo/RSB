@@ -7,8 +7,26 @@ export default class extends Controller {
 	static values = {
 		stocksPath: String,
 	};
+	static targets = ["searchInput", "limitSelect", "filterSelect"]
 
 	connect() {}
+
+	defaultParams() {
+		let params = new URLSearchParams();
+		if (this.filterSelectTarget) {
+			params.append(
+				this.filterSelectTarget.dataset.name,
+				this.filterSelectTarget.value
+			);
+		}
+		params.append(
+			this.limitSelectTarget.dataset.name || 'limit',
+			this.limitSelectTarget.value
+		);
+		params.append(this.searchInputTarget.dataset.name || 'keyword', this.searchInputTarget.value);
+
+		return params;
+	}
 
 	sortBy(event) {
 		let target = event.target;
@@ -34,12 +52,15 @@ export default class extends Controller {
 		}
 
 		let sortKey = target.dataset.sort;
-
-		let params = new URLSearchParams();
+		let params = this.defaultParams();
 		params.append('sort_key', sortKey);
 		params.append('order', order);
 
 		this.getData(params);
+	}
+
+	search() {
+		this.getData(this.defaultParams());
 	}
 
 	getData(params) {
