@@ -11,16 +11,16 @@
 
           <div class="row mt-6">
             <div class="col-md-12 col-12">
-              <div class="card" data-controller="table" data-table-stocks-path-value="<%= stocks_path %>">
+              <div class="card" data-controller="table" data-table-url-value="<%= stocks_path %>" data-table-is-filter-select-value="true">
                 <div class="card-header bg-white py-4">
                   <div class="row">
                     <div class="col-sm-6 col-lg-3" data-controller="search-select">
                       <%= select_tag "", options_from_collection_for_select(@branches, "id", "name"), class: 'use-search-select', data: { action: 'change->table#search', table_target: 'filterSelect', name: 'branch_id' } %>
                     </div>
-                    <div class="col-sm-6 col-lg-3" data-controller="search-select">
+                    <div class="col-sm-6 col-lg-2" data-controller="search-select">
                       <%= select_tag "", options_for_select([5, 10, 15, 20, 50, 100].to_a), class: 'use-search-select', data: { action: 'change->table#search', table_target: 'limitSelect' } %>
                     </div>
-                    <div class="col-sm-6 col-lg-3 offset-lg-3 pt-1">
+                    <div class="col-sm-6 col-lg-3 offset-lg-4 pt-1">
                       <div class="d-flex flex-row-reverse">
                         <input class="form-control" placeholder="ค้นหา..." data-action="keyup->table#search" data-table-target="searchInput">
                       </div>

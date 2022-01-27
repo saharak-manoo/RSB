@@ -6,6 +6,8 @@ import { get } from '@rails/request.js';
 export default class extends Controller {
 	static values = {
 		url: String,
+		isFilterSelect: Boolean,
+		isDatePicker: Boolean
 	};
 	static targets = ["searchInput", "limitSelect", "filterSelect", "datepickerInput"]
 
@@ -13,17 +15,21 @@ export default class extends Controller {
 
 	defaultParams() {
 		let params = new URLSearchParams();
-		if (this.filterSelectTarget) {
-			params.append(
-				this.filterSelectTarget.dataset.name,
-				this.filterSelectTarget.value
-			);
+		if (this.isFilterSelectValue) {
+			if (this.filterSelectTarget) {
+				params.append(
+					this.filterSelectTarget.dataset.name,
+					this.filterSelectTarget.value
+				);
+			}
 		}
-		if (this.datepickerInputTarget) {
-			params.append(
-				this.datepickerInputTarget.dataset.name,
-				this.datepickerInputTarget.value
-			);
+		if (this.isDatePickerValue) {
+			if (this.datepickerInputTarget) {
+				params.append(
+					this.datepickerInputTarget.dataset.name,
+					this.datepickerInputTarget.value
+				);
+			}
 		}
 		params.append(
 			this.limitSelectTarget.dataset.name || 'limit',
@@ -66,6 +72,10 @@ export default class extends Controller {
 	}
 
 	search() {
+		this.getData(this.defaultParams());
+	}
+
+	searchWithDatePicker() {
 		this.getData(this.defaultParams());
 	}
 

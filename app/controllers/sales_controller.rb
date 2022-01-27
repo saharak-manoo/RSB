@@ -11,27 +11,24 @@ class SalesController < ApplicationController
     end
   end
 
+  def show; end
+
   private
 
   def filter
     @sold_at = params[:sold_at] || Date.today
-    @orders = @orders.where(sold_at: @sold_at.to_date).left_outer_joins(stock_history: [stock: [:product]]).where(stocks: { branch_id: params[:branch_id] || 1 }).distinct
+    @orders = @orders.left_outer_joins(stock_history: [stock: [:product]]).where(stocks: { branch_id: params[:branch_id] || 1 }).distinct
     if params[:keyword].present?
       keyword = "%#{params[:keyword]}%"
       @orders = @orders.where('products.name ILIKE :keyword', keyword: keyword)
     end
 
+    @sales = Sale.calculate(@orders)
     if params[:sort_key].present? && params[:order].present?
-      case params[:sort_key]
-      when "product"
-        @orders = @orders.order("products.name #{params[:order]}")
-      when "sold_at"
-        @orders = @orders.order("orders.sold_at #{params[:order]}")
-      when "price"
-        @orders = @orders.order("orders.price #{params[:order]}")
-      end
+      @sales = @sales.sort_by { |s| s[params[:sort_key].to_sym] }
+      @sales = @sales.reverse if params[:order] == "desc"
     end
 
-    @orders = @orders.page(params[:page] || 1).per(params[:limit] || 5)
+    @sales = Kaminari.paginate_array(@sales).page(params[:page] || 1).per(params[:limit] || 5)
   end
 end

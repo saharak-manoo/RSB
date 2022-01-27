@@ -1,0 +1,25 @@
+<% sales.to_obj.each do |sale| %>
+  <tr>
+    <td class="align-middle">
+      <div class="d-flex align-items-center">
+        <h5 class=" mb-1">
+          <%= sale.product_name %>
+        </h5>
+      </div>
+    </td>
+    <td class="align-middle">
+      <%= sale.sold_at.to_date.date_full_format %>
+    </td>
+    <td class="align-middle">
+      <%= sale.qty %>
+    </td>
+    <td class="align-middle">
+      <%= precision(sale.price) %>
+    </td>
+    <td class="align-middle">
+      <%= link_to show_sales_path(product_id: sale.product_id, sold_at: sale.sold_at), class: 'text-info', data: { turbo_frame: "remote_modal" } do %>
+        <ion-icon name="information-circle-outline" size="large"></ion-icon>
+      <%end %>
+    </td>
+  </tr>
+<% end %>
