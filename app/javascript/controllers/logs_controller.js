@@ -5,7 +5,7 @@ import { get } from '@rails/request.js';
 
 export default class extends Controller {
 	connect() {
-		console.log('Pagination -> ');
+		console.log('Logs -> ');
 	}
 
 	search(event) {

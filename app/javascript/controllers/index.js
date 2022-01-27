@@ -4,32 +4,35 @@
 
 import { application } from "./application"
 
-import TableController from './table_controller.js';
-application.register('table', TableController);
+import DatePickerController from "./date_picker_controller.js"
+application.register("date-picker", DatePickerController)
 
-import DatePickerController from './date_picker_controller.js';
-application.register('date-picker', DatePickerController);
+import HelloController from "./hello_controller.js"
+application.register("hello", HelloController)
 
-import HelloController from './hello_controller.js';
-application.register('hello', HelloController);
+import LogsController from "./logs_controller.js"
+application.register("logs", LogsController)
 
-import LogsController from './logs_controller.js';
-application.register('logs', LogsController);
+import NavController from "./nav_controller.js"
+application.register("nav", NavController)
 
-import PaginationController from './pagination_controller.js';
-application.register('pagination', PaginationController);
+import PaginationController from "./pagination_controller.js"
+application.register("pagination", PaginationController)
 
-import RemoteModalController from './remote_modal_controller.js';
-application.register('remote-modal', RemoteModalController);
+import RemoteModalController from "./remote_modal_controller.js"
+application.register("remote-modal", RemoteModalController)
 
-import SearchSelectController from './search_select_controller.js';
-application.register('search-select', SearchSelectController);
+import SearchSelectController from "./search_select_controller.js"
+application.register("search-select", SearchSelectController)
 
 import StockHistoriesController from "./stock_histories_controller.js"
 application.register("stock-histories", StockHistoriesController)
 
 import StocksController from "./stocks_controller.js"
 application.register("stocks", StocksController)
+
+import TableController from "./table_controller.js"
+application.register("table", TableController)
 
 import ToastController from "./toast_controller.js"
 application.register("toast", ToastController)

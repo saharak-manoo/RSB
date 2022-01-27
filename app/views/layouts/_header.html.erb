@@ -1,13 +1,12 @@
 
 <nav class="navbar-classic navbar navbar-expand-lg">
-  <a id="nav-toggle" href="#"><i
-      data-feather="menu"
-      class="nav-icon me-2 icon-xs"></i></a>
+  <a id="nav-toggle" href="javascript:void(0);" data-controller="nav">
+    <ion-icon name="menu-outline" size="large" data-action="click->nav#showOrHideHeader" class="nav-icon me-2 ml-2"></ion-icon>
+  </a>
   <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
     <li class="dropdown ms-2">
-      <a class="rounded-circle" href="#" role="button" id="dropdownUser"
-        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="avatar avatar-md avatar-indicators avatar-online m-1">
+      <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="avatarr avatar-md avatar-indicators avatar-online m-1">
           <img alt="avatar" src="/logo.png" class="rounded-circle" />
         </div>
       </a>
