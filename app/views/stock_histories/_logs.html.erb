@@ -1,18 +1,24 @@
-<% stock_histories.each do |history| %>
-  <li class="list-group-item">
-    คุณ <strong><%= history.user.full_name %></strong> ได้ทำ <strong class="text-<%= history.status_color %>"><%= I18n.t(history.status_label.downcase) %></strong>
-    <% if history.target_branch_id.present? %>
-      จากสาขา <strong><%= history.target_branch.name %></strong>
-    <% end %>
-    <% if is_product_name %>
-      ของสินค้า <strong><%= history.product.name %></strong> ของสาขา <strong><%= history.branch.name %></strong>
-    <% end %>
-    จำนวน <strong class="text-<%= history.status_color %>"><%= history.qty %></strong> ชิ้น
-    เมื่อวันที่ <%= history.updated_at.datetime_formatted %>
-    <% if history.orders.present? %>
-      <% history.orders.each_with_index do |order, index| %>
-        <br><%= index + 1 %>. ขายเมื่อวันที่ <%= order.sold_at.date_formatted %> ราคาขาย <%= precision(order.price) %> บาท
+<% if stock_histories.present? %>
+  <% stock_histories.each do |history| %>
+    <li class="list-group-item">
+      คุณ <strong><%= history.user.full_name %></strong> ได้ทำ <strong class="text-<%= history.status_color %>"><%= I18n.t(history.status_label.downcase) %></strong>
+      <% if history.target_branch_id.present? %>
+        จากสาขา <strong><%= history.target_branch.name %></strong>
       <% end %>
-    <% end %>
+      <% if is_product_name %>
+        ของสินค้า <strong><%= history.product.name %></strong> ของสาขา <strong><%= history.branch.name %></strong>
+      <% end %>
+      จำนวน <strong class="text-<%= history.status_color %>"><%= history.qty %></strong> ชิ้น
+      เมื่อวันที่ <%= history.updated_at.datetime_formatted %>
+      <% if history.orders.present? %>
+        <% history.orders.each_with_index do |order, index| %>
+          <br><%= index + 1 %>. ขายเมื่อวันที่ <%= order.sold_at.date_formatted %> ราคาขาย <%= precision(order.price) %> บาท
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+<% else %>
+  <li class="list-group-item">
+    ยังไม่มีข้อมูล
   </li>
 <% end %>

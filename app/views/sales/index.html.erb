@@ -11,7 +11,7 @@
 
           <div class="row mt-6">
             <div class="col-md-12 col-12">
-              <div class="card" data-controller="table" data-table-url-value="<%= sales_path %>" data-table-is-filter-select-value="true" data-table-is-date-picker-value="true">
+              <div class="card" data-controller="table" data-table-url-value="<%= sales_path %>" data-table-is-filter-select-value="true" data-table-is-date-picker-between-value="true">
                 <div class="card-header bg-white py-4">
                   <div class="row">
                     <div class="col-sm-6 col-lg-3 pt-1" data-controller="search-select">
@@ -23,7 +23,7 @@
                     <div class="col-sm-12 col-lg-5 pt-2" data-controller="date-picker">
                       <div class="d-flex flex-row">
                         <div class="input-group">
-                          <input class="form-control border use-datepicker" eadonly value="<%= @sold_at.date_formatted %>" data-table-target="datepickerInput" data-name="sold_at">
+                          <input class="form-control border use-datepicker" readonly value="<%= @start_date.date_formatted %>" data-table-target="datepickerStartDateInput" data-name="start_date">
                           <span class="input-group-append">
                             <button class="btn btn-outline-primary bg-white border ms-n3" type="button" data-action="click->table#search">
                               <ion-icon name="calendar-outline"></ion-icon>
@@ -36,7 +36,7 @@
                         </button>
 
                         <div class="input-group">
-                          <input class="form-control border use-datepicker" eadonly value="<%= @sold_at.date_formatted %>" data-table-target="datepickerInput" data-name="sold_at">
+                          <input class="form-control border use-datepicker" readonly value="<%= @end_date.date_formatted %>" data-table-target="datepickerEndDateInput" data-name="end_date">
                           <span class="input-group-append">
                             <button class="btn btn-outline-primary bg-white border ms-n3" type="button" data-action="click->table#search">
                               <ion-icon name="calendar-outline"></ion-icon>

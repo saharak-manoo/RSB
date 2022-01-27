@@ -1,12 +1,12 @@
 class Sale
-  def self.calculate(orders)
+  def self.calculate(orders, is_sum = true)
     @sales = []
     orders.each do |order|
       stock_history = order.stock_history
       product = stock_history.stock.product
 
       sale = @sales.find { |d| d[:product_id] == product.id && d[:sold_at] == order.sold_at }
-      if sale.present?
+      if sale.present? && is_sum
         sale[:qty] += 1
         sale[:price] += order.price
       else

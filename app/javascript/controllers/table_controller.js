@@ -7,9 +7,10 @@ export default class extends Controller {
 	static values = {
 		url: String,
 		isFilterSelect: Boolean,
-		isDatePicker: Boolean
+		isDatePicker: Boolean,
+		isDatePickerBetween: Boolean
 	};
-	static targets = ["searchInput", "limitSelect", "filterSelect", "datepickerInput"]
+	static targets = ["searchInput", "limitSelect", "filterSelect", "datepickerInput", "datepickerStartDateInput", "datepickerEndDateInput"]
 
 	connect() {}
 
@@ -28,6 +29,21 @@ export default class extends Controller {
 				params.append(
 					this.datepickerInputTarget.dataset.name,
 					this.datepickerInputTarget.value
+				);
+			}
+		}
+		if (this.isDatePickerBetweenValue) {
+			if (this.datepickerStartDateInputTarget) {
+				params.append(
+					this.datepickerStartDateInputTarget.dataset.name,
+					this.datepickerStartDateInputTarget.value
+				);
+			}
+
+			if (this.datepickerEndDateInputTarget) {
+				params.append(
+					this.datepickerEndDateInputTarget.dataset.name,
+					this.datepickerEndDateInputTarget.value
 				);
 			}
 		}

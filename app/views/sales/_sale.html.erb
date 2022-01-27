@@ -1,0 +1,11 @@
+<% if sales.present? %>
+  <% sales.to_obj.each do |sale| %>
+    <li class="list-group-item">
+      ขายออก <%= precision(sale.price) %> บาท
+    </li>
+  <% end %>
+<% else %>
+  <li class="list-group-item">
+    ยังไม่มีข้อมูล
+  </li>
+<% end %>
