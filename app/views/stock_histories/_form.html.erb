@@ -5,7 +5,7 @@
         <div>
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-row">
-              <%= link_to :back do %>
+              <%= link_to stocks_path do %>
                 <ion-icon name="arrow-back-outline" class="text-white m-2"></ion-icon>
               <% end %>
               <h3 class="mb-0 text-white">แก้ไข Stock <%= @stock.product.name %> (สาขา <%= @stock.branch.name %>)</h3>
@@ -16,12 +16,12 @@
             <div class="col-md-12 col-12">
               <div class="card">
                 <div class="card-header bg-white py-4">
-                  <%= simple_form_for @stock_history, url: stock_stock_histories_path, method: :post, validate: true do |f| %>
+                  <%= simple_form_for @stock_history, url: stock_stock_histories_path, method: :post, validate: true, format: :html do |f| %>
                     <%= f.hidden_field :stock_id, value: @stock.id %>
                     <%= f.hidden_field :user_id, value: current_user.id %>
                       <div class="row">
                         <div class="col-sm-4" data-controller="search-select">
-                          <%= f.input :status, as: :select, collection: @stock_history_statuses, prompt: "โปรดเลือก", input_html: { class: "use-search-select", data: { action: 'change->stock-histories#onChangeStatus' } } %>
+                          <%= f.input :status, as: :select, collection: @stock_history_statuses, selected: '', prompt: "โปรดเลือก", input_html: { class: "use-search-select", data: { action: 'change->stock-histories#onChangeStatus' } } %>
                         </div>
                         <div id="for-import-or-change" class="d-none col-sm-12">
                           <div class="row">

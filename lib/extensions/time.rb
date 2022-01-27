@@ -1,6 +1,6 @@
 class Time
   def value
-    I18n.locale == :th ? self + 543.year : self
+   self
   end
 
   def date_formatted

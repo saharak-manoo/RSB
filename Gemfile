@@ -98,3 +98,7 @@ gem 'simplest_status'
 gem 'kaminari'
 
 gem 'draper'
+
+gem 'pp'
+
+gem 'awesome_print', '~> 1.8', require: :ap

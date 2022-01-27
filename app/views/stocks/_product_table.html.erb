@@ -1,23 +1,29 @@
-<% stocks.each_with_index do |stock, index| %>
-  <% stock = stock.decorate %>
-  <% product = stock.product %>
-  <tr>
-    <td class="align-middle">
-      <div class="d-flex align-items-center">
-        <h5 class=" mb-1">
-          <%= product.name %>
-        </h5>
-      </div>
-    </td>
-    <td class="align-middle">
-      <%= stock.qty %>
-    </td>
-    <td class="align-middle">
-      <%= precision(product.price) %>
-    </td>
+<% if stocks.present? %>
+  <% stocks.each_with_index do |stock, index| %>
+    <% stock = stock.decorate %>
+    <% product = stock.product %>
+    <tr>
+      <td class="align-middle">
+        <div class="d-flex align-items-center">
+          <h5 class=" mb-1">
+            <%= product.name %>
+          </h5>
+        </div>
+      </td>
+      <td class="align-middle">
+        <%= stock.qty %>
+      </td>
+      <td class="align-middle">
+        <%= precision(product.price) %>
+      </td>
 
-    <td class="align-middle">
-      <%= stock.edit_button %>
-    </td>
+      <td class="align-middle">
+        <%= stock.action_button %>
+      </td>
+    </tr>
+  <% end %>
+<% else %>
+  <tr>
+    <td colspan="4" class="text-center">ยังไม่มีข้อมูล</td>
   </tr>
 <% end %>

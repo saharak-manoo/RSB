@@ -9,28 +9,40 @@
             </div>
           </div>
 
-          <div class="row mt-6" data-controller="stocks" data-stocks-stocks-path-value="<%= stocks_path %>">
+          <div class="row mt-6">
             <div class="col-md-12 col-12">
-              <div class="card">
+              <div class="card" data-controller="table" data-table-url-value="<%= stocks_path %>" data-table-is-filter-select-value="true">
                 <div class="card-header bg-white py-4">
                   <div class="row">
                     <div class="col-sm-6 col-lg-3" data-controller="search-select">
-                      <%= select_tag "", options_from_collection_for_select(@branches, "id", "name"), id: 'branch-select', class: 'use-search-select', data: { action: "change->stocks#changeBranch" } %>
+                      <%= select_tag "", options_from_collection_for_select(@branches, "id", "name"), class: 'use-search-select', data: { action: 'change->table#search', table_target: 'filterSelect', name: 'branch_id' } %>
                     </div>
-                    <div class="col-sm-6 col-lg-3 offset-lg-6 pt-1">
+                    <div class="col-sm-6 col-lg-2" data-controller="search-select">
+                      <%= select_tag "", options_for_select([5, 10, 15, 20, 50, 100].to_a), class: 'use-search-select', data: { action: 'change->table#search', table_target: 'limitSelect' } %>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 offset-lg-4 pt-1">
                       <div class="d-flex flex-row-reverse">
-                        <input class="form-control" placeholder="ค้นหา..." data-action="keyup->stocks#searchProduct">
+                        <input class="form-control" placeholder="ค้นหา..." data-action="keyup->table#search" data-table-target="searchInput">
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table text-nowrap mb-0">
+                  <table class="table text-nowrap mb-0 use-data-table">
                     <thead class="table-light">
                       <tr>
-                        <th>ชื่อสินค้า</th>
-                        <th>จำนวน (ชิ้น)</th>
-                        <th>ราคา (บาท)</th>
+                        <th class="sort" data-sort="product" data-action="click->table#sortBy">
+                          ชื่อสินค้า
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
+                        <th class="sort" data-sort="qty" data-action="click->table#sortBy">
+                          จำนวน (ชิ้น)
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
+                        <th class="sort" data-sort="price" data-action="click->data-table#sortBy">
+                          ราคา (บาท)
+                          <ion-icon name="swap-vertical-outline"></ion-icon>
+                        </th>
                         <th></th>
                       </tr>
                     </thead>

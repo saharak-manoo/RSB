@@ -18,6 +18,18 @@ Rails.application.routes.draw do
   end
 
   resources :stocks do
+    member do
+      get '/logs', to: 'stocks#logs'
+    end
+
     resources :stock_histories, path: 'check'
+  end
+
+  resources :logs, only: [:index]
+
+  resources :sales, only: [:index] do
+    collection do
+      get '/show', to: 'sales#show'
+    end
   end
 end

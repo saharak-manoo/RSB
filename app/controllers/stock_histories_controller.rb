@@ -12,7 +12,7 @@ class StockHistoriesController < ApplicationController
     if @stock_history.save
       flash[:warning] = "บันทึกค่าเรียบร้อยแล้ว"
 
-      redirect_to stocks_path
+      redirect_to new_stock_stock_history_path
     else
       flash[:danger] = @stock_history.errors.full_messages.to_sentence
 
@@ -24,7 +24,7 @@ class StockHistoriesController < ApplicationController
     if @stock_history.update(stock_history_params)
       flash[:warning] = "แก้ไขข้อมูลเรียบร้อยแล้ว"
 
-      redirect_to stocks_path
+      redirect_to edit_stock_stock_history_path(@stock_history)
     else
       flash[:danger] = @stock_history.errors.full_messages.to_sentence
 

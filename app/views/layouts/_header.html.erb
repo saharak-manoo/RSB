@@ -26,8 +26,9 @@
               <ion-icon name="analytics-outline"></ion-icon> ประวัติการแก้ไขข้อมูล
             <% end %>
           </li>
-          <li data-controller="session" data-session-destroy-user-session-path-value=<%= destroy_user_session_path %>>
-            <%= link_to  "javascript:void(0);", class: 'dropdown-item', data: { action: "click->session#logout"  } do %>
+
+          <li>
+            <%= link_to destroy_user_session_path, class: 'dropdown-item', data: { turbo_method: :delete, turbo_confirm: "คุณแน่ใจนะ?"  } do %>
               <ion-icon name="log-out-outline"></ion-icon> ออกจากระบบ
             <% end %>
           </li>
